@@ -131,7 +131,7 @@ app.all(`*`, async (req, res) => {
   }
 
   
-  const options = {
+  let options = {
       method: req.method,
       timeout: process.env.TIMEOUT||30000,
       signal: controller.signal,
@@ -175,6 +175,10 @@ app.all(`*`, async (req, res) => {
         }
       }
   };
+
+  if (req.headers['OpenAI-Beta']) {
+    options.headers['OpenAI-Beta'] = req.headers['OpenAI-Beta'];
+  }
   
   if( req.method.toLocaleLowerCase() === 'post' && req.body ) options.body = JSON.stringify(restBody);
   // console.log({url, options});
