@@ -176,9 +176,11 @@ app.all(`*`, async (req, res) => {
       }
   };
 
-  if (req.headers['OpenAI-Beta']) {
-    options.headers['OpenAI-Beta'] = req.headers['OpenAI-Beta'];
+
+  if (req.headers['openai-beta']) {
+    options.headers['openai-beta'] = req.headers['openai-beta'];
   }
+
   
   if( req.method.toLocaleLowerCase() === 'post' && req.body ) options.body = JSON.stringify(restBody);
   // console.log({url, options});

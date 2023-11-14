@@ -1,2 +1,4 @@
 node_modules
 RoboFile.php
+/.DS_Store
+/docker/package-lock.json
